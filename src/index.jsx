@@ -18,6 +18,7 @@ class Fab extends React.Component {
   static defaultProps = {
     position: { bottom: 0, right: 0 },
     event: 'hover',
+    alwaysShowText: true
   };
 
   state = { open: false };
@@ -43,7 +44,7 @@ class Fab extends React.Component {
   };
 
   rc() {
-    const { children: c, position: p } = this.props;
+    const { children: c, position: p, alwaysShowText:p } = this.props;
     const { open } = this.state;
     if (React.Children.count(c) > 6)
       console.warn('react-tiny-fab only supports up to 6 action buttons');
@@ -57,7 +58,7 @@ class Fab extends React.Component {
           onClick: () => this.actionOnClick(ch.props.onClick),
         })}
         {ch.props.text && (
-          <span className={'right' in p ? 'right' : ''} aria-hidden={false}>
+          <span style={(alwaysShowText ? {opacity:1} : {})} className={'right' in p ? 'right' : ''} aria-hidden={!open}>
             {ch.props.text}
           </span>
         )}
