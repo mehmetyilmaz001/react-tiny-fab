@@ -57,7 +57,7 @@ class Fab extends React.Component {
           onClick: () => this.actionOnClick(ch.props.onClick),
         })}
         {ch.props.text && (
-          <span className={'right' in p ? 'right' : ''} aria-hidden={!open}>
+          <span className={'right' in p ? 'right' : ''} aria-hidden={false}>
             {ch.props.text}
           </span>
         )}
